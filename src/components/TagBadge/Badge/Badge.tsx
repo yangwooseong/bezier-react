@@ -27,6 +27,8 @@ function Badge({
   iconName,
   children,
   // Injected Styles
+  className,
+  interpolation,
   wrapperClassName,
   wrapperInterpolation,
   testId = BADGE_TEST_ID,
@@ -49,13 +51,13 @@ function Badge({
   return (
     <Styled.Wrapper
       {...props}
-      className={wrapperClassName}
+      className={className ?? wrapperClassName}
       data-testid={testId}
       horizontalPadding={getProperTagBadgePadding(size)}
       rounding={getProperTagBadgeRounding(size)}
       bgColor={bgSemanticName}
       color={textSemanticName}
-      interpolation={wrapperInterpolation}
+      interpolation={interpolation ?? wrapperInterpolation}
     >
       { IconComponent }
 

@@ -29,6 +29,8 @@ function Tag({
   // Handlers
   onDelete,
   // Injected Styles
+  className,
+  interpolation,
   wrapperClassName,
   wrapperInterpolation,
   testId = TAG_TEST_ID,
@@ -53,12 +55,12 @@ function Tag({
   return (
     <TagBadgeStyled.Wrapper
       {...props}
-      className={wrapperClassName}
+      className={className ?? wrapperClassName}
       data-testid={testId}
       horizontalPadding={getProperTagBadgePadding(size)}
       rounding={getProperTagBadgeRounding(size)}
       bgColor={bgColor}
-      interpolation={wrapperInterpolation}
+      interpolation={interpolation ?? wrapperInterpolation}
     >
       <TagBadgeText
         horizontalPadding={TAG_TEXT_HORIZONTAL_PADDING}
