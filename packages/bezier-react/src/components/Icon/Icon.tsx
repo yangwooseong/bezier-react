@@ -1,5 +1,9 @@
 /* External dependencies */
-import React, { memo } from 'react'
+import React, {
+  memo,
+  NamedExoticComponent,
+  ReactElement,
+} from 'react'
 import { noop } from 'lodash-es'
 
 /* Internal dependencies */
@@ -39,3 +43,8 @@ export const Icon = memo(function Icon({
     />
   )
 })
+
+export type IconType = NamedExoticComponent<IconProps>
+
+export const isIcon = (maybeIcon): maybeIcon is IconType & ReactElement =>
+  maybeIcon?.type === Icon
