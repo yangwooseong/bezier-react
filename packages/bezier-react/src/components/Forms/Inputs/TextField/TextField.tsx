@@ -289,9 +289,9 @@ forwardedRef: Ref<TextFieldRef>,
         <Styled.RightItemWrapper
           key={key}
           clickable={!!item.props.onClick}
-          onClick={item.props.onClick}
         >
           <Icon
+            onClick={item.props.onClick}
             source={item.props.source}
             color={item.props.color ?? 'txt-black-dark'}
             size={IconSize.XS}
