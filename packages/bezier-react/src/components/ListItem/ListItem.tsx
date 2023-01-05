@@ -8,7 +8,7 @@ import { Typography } from 'Foundation'
 import useMergeRefs from 'Hooks/useMergeRefs'
 import { mergeClassNames } from 'Utils/stringUtils'
 import { Text } from 'Components/Text'
-import { IconSize, isIconName } from 'Components/Icon'
+import { IconSize } from 'Components/Icon'
 import useAdjacentElementBorderRadius from './useAdjacentElementBorderRadius'
 import ListItemProps, { ListItemSize, ListItemVariant } from './ListItem.types'
 import {
@@ -128,12 +128,12 @@ forwardedRef: React.Ref<ListItemRef>,
       )
     }
 
-    if (!isNil(leftIcon) && isIconName(leftIcon)) {
+    if (!isNil(leftIcon)) {
       return (
         <LeftContentWrapper>
           <StyledIcon
             className={iconClassName}
-            name={leftIcon}
+            source={leftIcon.props.source}
             size={IconSize.S}
             active={isActive}
             variant={variant}

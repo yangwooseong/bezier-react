@@ -2,22 +2,30 @@
 import React, { useState, useMemo } from 'react'
 import base from 'paths.macro'
 import { Meta, Story } from '@storybook/react'
-import { compact } from 'lodash-es'
+import { compact, isNil } from 'lodash-es'
 
 /* Internal dependencies */
 import { iconList, getTitle } from 'Utils/storyUtils'
-import ListItem from './ListItem'
+import icons from 'Components/Icon/generated'
+import { Icon } from 'Components/Icon'
 import ListItemProps, { ListItemSize, ListItemVariant } from './ListItem.types'
+import ListItem from './ListItem'
 
 export default {
   title: getTitle(base),
   component: ListItem,
 } as Meta
 
-const Template: Story<ListItemProps & { width: number }> = ({ width, ...listItemProps }) => (
+interface ArgTypes extends Omit<ListItemProps, 'leftIcon'> {
+  width: number
+  leftIcon?: string
+}
+
+const Template: Story<ArgTypes> = ({ leftIcon: leftIconKey, width, ...listItemProps }) => (
   <div style={{ width }}>
     <ListItem
       optionKey="menu-item-0"
+      leftIcon={isNil(leftIconKey) ? undefined : <Icon source={icons[leftIconKey]} />}
       {...listItemProps}
     />
   </div>
