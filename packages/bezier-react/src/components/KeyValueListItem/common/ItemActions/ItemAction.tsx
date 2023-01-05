@@ -28,7 +28,7 @@ function ItemAction(
           onClick={action.onClick ?? noop}
         >
           <Styled.ActionIcon
-            name={action.icon}
+            source={action.icon.props.source}
             color={action.iconColor ?? 'txt-black-dark'}
             size={IconSize.XS}
           />

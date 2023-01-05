@@ -4,7 +4,7 @@ import { isString } from 'lodash-es'
 
 /* Internal dependencies */
 import { Typography } from 'Foundation'
-import { LegacyIcon, IconSize, isIconName } from 'Components/Icon'
+import { IconSize, isIcon, Icon } from 'Components/Icon'
 import { TEST_ID_MAP } from 'Components/KeyValueListItem/KeyValueListItem.const'
 import { KeyItemProps } from './KeyItem.types'
 import * as Styled from './KeyItem.styled'
@@ -21,11 +21,11 @@ function KeyItem(
   forwardedRef: Ref<HTMLDivElement>,
 ) {
   const KeyIcon = useMemo(() => {
-    if (isIconName(keyIcon)) {
+    if (isIcon(keyIcon)) {
       return (
-        <LegacyIcon
-          name={keyIcon}
+        <Icon
           size={IconSize.S}
+          source={keyIcon.props.source}
           color="txt-black-dark"
         />
       )
