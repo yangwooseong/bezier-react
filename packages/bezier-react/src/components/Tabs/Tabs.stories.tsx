@@ -70,10 +70,10 @@ function TabsComposition({
 
           <TabActions>
             <TabAction href="https://github.com/channel-io/bezier-react">
-              Sub1
+              Bezier Repo
             </TabAction>
             <TabAction onClick={() => { window.alert('Hi!') }}>
-              Sub2
+              More action
             </TabAction>
           </TabActions>
         </TabList>

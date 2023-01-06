@@ -34,6 +34,7 @@ const commonStyle = css`
   align-items: center;
   justify-content: center;
   width: 100%;
+  min-width: max-content;
   margin: 4px 0 5px 0;
   color: ${({ foundation }) => foundation?.theme?.['bgtxt-blue-normal']};
   text-decoration: none;
