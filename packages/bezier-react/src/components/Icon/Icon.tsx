@@ -1,7 +1,6 @@
 /* External dependencies */
 import React, {
   memo,
-  ReactElement,
 } from 'react'
 import { noop } from 'lodash-es'
 
@@ -42,8 +41,3 @@ export const Icon = memo(function Icon({
     />
   )
 })
-
-export type BezierIcon = ReactElement<IconProps>
-
-export const isIcon = (maybeIcon): maybeIcon is BezierIcon =>
-  maybeIcon?.type === Icon
