@@ -4,10 +4,33 @@ import { noop, isNil, isEmpty, isArray, isBoolean } from 'lodash-es'
 import { v4 as uuid } from 'uuid'
 
 /* Internal dependencies */
-import { IconSize } from 'Components/Icon'
+import { IconSize, isIconName } from 'Components/Icon'
 import { TEST_ID_MAP } from 'Components/KeyValueListItem/KeyValueListItem.const'
-import { ItemActionProps, KeyValueListItemActionProps } from './ItemAction.types'
+import { ItemActionProps, ItemActionWithIcon as ItemWithIcon, KeyValueListItemActionProps } from './ItemAction.types'
 import * as Styled from './ItemAction.styled'
+
+function ActionIcon({
+  icon,
+  iconColor,
+}: ItemWithIcon) {
+  if (isIconName(icon)) {
+    return (
+      <Styled.ActionLegacyIcon
+        name={icon}
+        color={iconColor ?? 'txt-black-dark'}
+        size={IconSize.XS}
+      />
+    )
+  }
+
+  return (
+    <Styled.ActionIcon
+      source={icon}
+      color={iconColor ?? 'txt-black-dark'}
+      size={IconSize.XS}
+    />
+  )
+}
 
 function ItemAction(
   {
@@ -27,13 +50,10 @@ function ItemAction(
           show={isBoolean(action.show) ? action.show : true}
           onClick={action.onClick ?? noop}
         >
-          <Styled.ActionIcon
-            source={action.icon.props.source}
-            color={action.iconColor ?? 'txt-black-dark'}
-            size={IconSize.XS}
-          />
+          <ActionIcon {...action} />
         </Styled.ActionIconWrapper>
       )
+
       if (!isEmpty(action.tooltip)) {
         return (
           <Styled.ActionIconTooltip key={key} content={action.tooltip}>
@@ -43,6 +63,7 @@ function ItemAction(
       }
       return iconElement
     }
+
     return React.cloneElement(action, { key })
   }, [])
 
