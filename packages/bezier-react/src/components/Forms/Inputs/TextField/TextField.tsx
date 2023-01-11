@@ -14,7 +14,7 @@ import { v4 as uuid } from 'uuid'
 
 /* Internal dependencies */
 import { window } from 'Utils/domUtils'
-import { Icon, IconSize, CancelCircleFilledIcon, isIcon } from 'Components/Icon'
+import { Icon, IconSize, CancelCircleFilledIcon, LegacyIcon, isIconName } from 'Components/Icon'
 import useFormFieldProps from 'Components/Forms/useFormFieldProps'
 import Styled from './TextField.styled'
 import {
@@ -244,13 +244,26 @@ forwardedRef: Ref<TextFieldRef>,
   }, [activeInput])
 
   const renderLeftItem = useCallback((item: TextFieldItemProps) => {
-    if (isIcon(item)) {
+    if ('icon' in item) {
+      if (isIconName(item.icon)) {
+        return (
+          <Styled.LeftLegacyIcon
+            name={item.icon}
+            size={IconSize.S}
+            color={item.iconColor ?? 'txt-black-dark'}
+            clickable={!isNil(item.onClick)}
+            onClick={item.onClick}
+          />
+        )
+      }
+
       return (
         <Styled.LeftIcon
-          source={item.props.source}
+          source={item.icon}
           size={IconSize.S}
-          color={item.props.color ?? 'txt-black-dark'}
-          clickable={!!item.props.onClick}
+          color={item.iconColor ?? 'txt-black-dark'}
+          clickable={!isNil(item.onClick)}
+          onClick={item.onClick}
         />
       )
     }
@@ -284,23 +297,41 @@ forwardedRef: Ref<TextFieldRef>,
   ])
 
   const renderRightItem = useCallback((item: TextFieldItemProps, key?: string) => {
-    if (isIcon(item)) {
+    if ('icon' in item) {
+      if (isIconName(item.icon)) {
+        return (
+          <Styled.RightItemWrapper
+            key={key}
+            clickable={!isNil(item.onClick)}
+            onClick={item.onClick}
+          >
+            <LegacyIcon
+              name={item.icon}
+              size={IconSize.XS}
+              color={item.iconColor ?? 'txt-black-dark'}
+            />
+          </Styled.RightItemWrapper>
+        )
+      }
+
       return (
         <Styled.RightItemWrapper
           key={key}
-          clickable={!!item.props.onClick}
+          clickable={!isNil(item.onClick)}
+          onClick={item.onClick}
         >
           <Icon
-            onClick={item.props.onClick}
-            source={item.props.source}
-            color={item.props.color ?? 'txt-black-dark'}
+            source={item.icon}
             size={IconSize.XS}
+            color={item.iconColor ?? 'txt-black-dark'}
           />
         </Styled.RightItemWrapper>
       )
     }
 
-    return React.cloneElement(item, { key })
+    return React.cloneElement(
+      item, { key },
+    )
   }, [])
 
   const RightComponent = useMemo(() => {
