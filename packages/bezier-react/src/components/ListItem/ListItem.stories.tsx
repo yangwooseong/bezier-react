@@ -7,7 +7,6 @@ import { compact, isNil } from 'lodash-es'
 /* Internal dependencies */
 import { iconList, getTitle } from 'Utils/storyUtils'
 import icons from 'Components/Icon/generated'
-import { Icon } from 'Components/Icon'
 import ListItemProps, { ListItemSize, ListItemVariant } from './ListItem.types'
 import ListItem from './ListItem'
 
@@ -25,7 +24,7 @@ const Template: Story<ArgTypes> = ({ leftIcon: leftIconKey, width, ...listItemPr
   <div style={{ width }}>
     <ListItem
       optionKey="menu-item-0"
-      leftIcon={isNil(leftIconKey) ? undefined : <Icon source={icons[leftIconKey]} />}
+      leftIcon={isNil(leftIconKey) ? undefined : icons[leftIconKey]}
       {...listItemProps}
     />
   </div>
