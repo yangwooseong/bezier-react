@@ -6,10 +6,10 @@ import type {
   SideContentProps,
 } from '~/src/types/ComponentProps'
 
-import { type IconName } from '~/src/components/Icon'
+import { type BezierIcon } from '~/src/components/Icon'
 
 interface NavItemOptions {
-  leftIcon?: IconName
+  leftIcon?: BezierIcon
   name: string
   target?: HTMLAnchorElement['target']
   onClick?: (e?: React.MouseEvent, name?: string) => void
