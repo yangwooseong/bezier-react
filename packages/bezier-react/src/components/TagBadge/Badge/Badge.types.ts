@@ -5,7 +5,7 @@ import {
   type VariantProps,
 } from '~/src/types/ComponentProps'
 
-import { type IconName } from '~/src/components/Icon'
+import type { BezierIcon } from '~/src/components/Icon'
 import {
   type TagBadgeSize,
   type TagBadgeVariant,
@@ -15,7 +15,7 @@ interface BadgeOptions {
   /**
    * Icon to be shown on the left side of the badge.
    */
-  iconName?: IconName
+  icon?: BezierIcon
 }
 
 interface BadgeProps extends
