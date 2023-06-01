@@ -21,7 +21,7 @@ describe('NavGroup Test >', () => {
 
   beforeEach(() => {
     props = {
-      leftIcon: 'dot',
+      leftIcon: DotIcon,
       name: 'general',
       content: 'test-content',
       rightContent: <Icon source={DotIcon} size={IconSize.XS} color="bgtxt-orange-normal" />,
