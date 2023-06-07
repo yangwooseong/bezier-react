@@ -1,3 +1,5 @@
+import { type BezierIcon } from '@channel.io/bezier-icons'
+
 import type {
   ActivatableProps,
   BezierComponentProps,
@@ -5,8 +7,6 @@ import type {
   LinkProps,
   SideContentProps,
 } from '~/src/types/ComponentProps'
-
-import { type BezierIcon } from '~/src/components/Icon'
 
 interface NavItemOptions {
   leftIcon?: BezierIcon

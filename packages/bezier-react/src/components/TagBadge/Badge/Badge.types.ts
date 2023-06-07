@@ -1,3 +1,5 @@
+import { type BezierIcon } from '@channel.io/bezier-icons'
+
 import {
   type BezierComponentProps,
   type ChildrenProps,
@@ -5,7 +7,6 @@ import {
   type VariantProps,
 } from '~/src/types/ComponentProps'
 
-import type { BezierIcon } from '~/src/components/Icon'
 import {
   type TagBadgeSize,
   type TagBadgeVariant,

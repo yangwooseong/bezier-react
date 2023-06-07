@@ -4,6 +4,11 @@ import {
 } from 'react'
 import type React from 'react'
 
+import {
+  type BezierIcon,
+  InfoFilledIcon,
+} from '@channel.io/bezier-icons'
+
 import { type TransitionDuration } from '~/src/foundation'
 
 import {
@@ -12,11 +17,6 @@ import {
 } from '~/src/types/ComponentProps'
 import { type InjectedInterpolation } from '~/src/types/Foundation'
 import { noop } from '~/src/utils/functionUtils'
-
-import {
-  type BezierIcon,
-  InfoFilledIcon,
-} from '~/src/components/Icon'
 
 export enum ToastPlacement {
   BottomLeft = 'bottomLeft',

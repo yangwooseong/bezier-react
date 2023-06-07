@@ -1,6 +1,10 @@
 import React from 'react'
 
 import {
+  DotIcon,
+  SettingsIcon,
+} from '@channel.io/bezier-icons'
+import {
   type Meta,
   type Story,
 } from '@storybook/react'
@@ -9,10 +13,8 @@ import base from 'paths.macro'
 import { getTitle } from '~/src/utils/storyUtils'
 
 import {
-  DotIcon,
   Icon,
   IconSize,
-  SettingsIcon,
 } from '~/src/components/Icon'
 import { NavItem } from '~/src/components/Navigator/NavItem'
 

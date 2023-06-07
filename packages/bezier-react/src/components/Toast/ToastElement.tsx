@@ -4,6 +4,7 @@ import React, {
   useMemo,
 } from 'react'
 
+import { CancelIcon } from '@channel.io/bezier-icons'
 import { v4 as uuid } from 'uuid'
 
 import { Typography } from '~/src/foundation'
@@ -11,7 +12,6 @@ import { Typography } from '~/src/foundation'
 import { isString } from '~/src/utils/typeUtils'
 
 import {
-  CancelIcon,
   Icon,
   IconSize,
 } from '~/src/components/Icon'
