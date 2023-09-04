@@ -1,0 +1,27 @@
+name: Generate Svg file from icons json
+
+on:
+  push:
+    branches:
+      - icon-*
+    paths:
+      - packages/bezier-icons/icons.json
+
+jobs:
+  generate-svg:
+    name: Generate Svg file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.15.0
+
+      - name: Install Dependencies
+        run: |
+          yarn install
