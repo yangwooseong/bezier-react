@@ -1,0 +1,44 @@
+name: Generate icon files from icons json
+
+on:
+  push:
+    branches:
+      - icon-*
+    paths:
+      - packages/bezier-icons/icons.json
+
+jobs:
+  generate-svg:
+    name: Generate icon svg files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Yarn cache path
+        id: yarn-cache
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.17.1
+
+      - name: Load Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        run: |
+          yarn install
+
+      - name: Generate Svg files from icons.json
+        run: |
+          yarn workspace @channel.io/bezier-icons generate-icon-files
+          git add .
+          git commit -m "feat(bezier-icons): generate icon files from icons.json"
+          git push
