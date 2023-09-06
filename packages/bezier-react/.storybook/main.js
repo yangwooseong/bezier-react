@@ -48,7 +48,7 @@ module.exports = {
 
     config.resolve.extensions.push('.ts', '.tsx')
 
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'development') {
       /**
        * @note
        * 
@@ -58,6 +58,7 @@ module.exports = {
       config.plugins.push(new ReactDocgenTypescriptPlugin({
         shouldExtractLiteralValuesFromEnum: true,
         propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+        shouldRemoveUndefinedFromOptional: true,
       }))
     }
 
