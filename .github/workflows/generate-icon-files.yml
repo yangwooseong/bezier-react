@@ -24,12 +24,14 @@ jobs:
         run: |
           git config --global user.email "eng@channel.io"
           git config --global user.name "ch-builder"
+    
 
       - name: Generate Svg files from icons.json
         run: |
+          echo "here"
           node packages/bezier-icons/scripts/generate-icon-files.js
           git add .
-          git commit -m "feat(bezier-icons): generate icon files from icons.json"
+          git commit -m "feat(bezier-icons): generate icon files from icons.json" || echo nothing to commit
       
       - name: Delete icons.json files
         run: |
