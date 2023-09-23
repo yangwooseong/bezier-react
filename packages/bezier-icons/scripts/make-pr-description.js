@@ -4,6 +4,6 @@ let log;
 
 exec('git log -1 --raw', (undefined, stdout) => {
   log = stdout
-  console.log(`"var=abc" >> "$OUTPUT"`)
+  console.log(`echo "var=abc" >> "$OUTPUT"`)
 })
 
