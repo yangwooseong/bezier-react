@@ -40,7 +40,11 @@ jobs:
       - id: make
         name: Make pr descrition from commit
         run: |
-          node packages/bezier-icons/scripts/make-pr-description.js
+          import os
+            name = 'my_name'
+            value = 'my_value'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+          print(f'{name}={value}', file=fh)
       
       - name: echo
-        run:  echo "$var"
+        run:  echo "$my_value $my_name"
