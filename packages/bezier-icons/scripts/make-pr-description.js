@@ -2,6 +2,7 @@ const { exec } = require('child_process')
 
 const githubToken = process.argv[0]
 const pullNumber = process.argv[1]
+console.log("LOG: ", githubToken, pullNumber)
 
 const keyToHeader = {
   M: 'Modified 🖊️\n',
@@ -43,7 +44,7 @@ const getDescription = gitLog => {
 exec('git log -1 --name-status --pretty="format:"', async (_undefined, stdout) => {
   const description = getDescription(stdout)
 
-  await fetch(`https://api.github.com/repos/yangwooseong/bezier-react/${pullNumber}`, {
+  const res = await fetch(`https://api.github.com/repos/yangwooseong/bezier-react/${pullNumber}`, {
     method: 'PATCH',
     headers: {
       'X-GitHub-Api-Version': '2022-11-28',
@@ -52,5 +53,6 @@ exec('git log -1 --name-status --pretty="format:"', async (_undefined, stdout) =
     },
     body: description,
   })
+  console.log("LOG: ", res)
 })
 
