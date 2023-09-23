@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: 18.17.1
 
+      - name: Make pr descrition from commit
+        uses: actions/setup-python@v4
+
       - name: Git Config
         run: |
           git config --global user.email "eng@channel.io"
@@ -38,7 +41,6 @@ jobs:
           git push
       
       - id: make
-        name: Make pr descrition from commit
         run: |
           import os
             name = 'my_name'
