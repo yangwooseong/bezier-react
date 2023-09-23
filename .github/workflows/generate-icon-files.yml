@@ -36,3 +36,9 @@ jobs:
           git rm packages/bezier-icons/icons.json
           git commit -m "feat(bezier-icons): remove icons.json"
           git push
+
+      - name: update-pull-request
+        uses: kt3k/update-pr-description@v2
+        with:
+          pr_body: "**some description**"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
