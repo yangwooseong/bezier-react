@@ -43,4 +43,4 @@ jobs:
           node packages/bezier-icons/scripts/make-pr-description.js
       
       - name: echo
-        run:  echo $var
+        run:  echo "$var"
