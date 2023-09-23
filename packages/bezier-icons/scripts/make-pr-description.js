@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 const { exec } = require('child_process')
 
-const githubToken = process.argv[0]
-const pullNumber = process.argv[1]
+const githubToken = process.argv[2]
+const pullNumber = process.argv[3]
 
 const keyToHeader = {
   M: 'Modified 🖊️\n',
@@ -32,8 +33,8 @@ const getDescription = gitLog => {
       return acc
     }, {})
 
-  for (const [key, icons] of Object.entries(updatedAndIconPath)) {
-    description += key
+  for (const [header, icons] of Object.entries(updatedAndIconPath)) {
+    description += `${header} : ${icons.length} icon(s)`
     description += icons.join('\n')
   }
 
@@ -43,14 +44,22 @@ const getDescription = gitLog => {
 exec('git log -1 --name-status --pretty="format:"', async (_undefined, stdout) => {
   const description = getDescription(stdout)
 
-  await fetch(`https://api.github.com/repos/yangwooseong/bezier-react/${pullNumber}`, {
-    method: 'PATCH',
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28',
-      Authorization: `Bearer ${githubToken}`,
-      Accept: 'application/vnd.github+json',
-    },
-    body: description,
-  })
+  try {
+    const res = await fetch(`https://api.github.com/repos/yangwooseong/bezier-react/pulls/${pullNumber}`, {
+      method: 'PATCH',
+      headers: {
+        'X-GitHub-Api-Version': '2022-11-28',
+        Authorization: `Bearer ${githubToken}`,
+        Accept: 'application/vnd.github+json',
+      },
+      body: JSON.stringify({ body: description }),
+    })
+
+    if (!res.ok) {
+      console.log('Message: ', await res.json())
+    }
+  } catch (e) {
+    console.log('Error: ', e)
+  }
 })
 
