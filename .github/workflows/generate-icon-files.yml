@@ -24,6 +24,10 @@ jobs:
         run: |
           git config --global user.email "eng@channel.io"
           git config --global user.name "ch-builder"
+      
+      - name: log
+        run: |
+          ls -al packages/bezier-icons
 
       - name: Generate svg files from icons.json
         id: generate-svg-files
@@ -42,7 +46,7 @@ jobs:
       - name: Add pr description
         if: ${{ steps.generate-svg-files.outputs.icon_not_changed == 0}}
         run: |
-          node packages/bezier-icons/scripts/make-pr-description.js ${{ secrets.GITHUB_TOKEN }} ${{ steps.pr.outputs.pull_request_number }}
+          node packages/bezier-icons/scripts/add-pr-description.js ${{ secrets.GITHUB_TOKEN }} ${{ steps.pr.outputs.pull_request_number }}
       
       - name: Delete icons.json files
         run: |

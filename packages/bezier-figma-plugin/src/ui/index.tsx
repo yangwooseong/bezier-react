@@ -19,6 +19,7 @@ import IconExtract from './components/IconExtract'
 const container = document.getElementById('root') as HTMLElement
 const root = createRoot(container)
 
+console.log("DEV")
 root.render(
   <BezierProvider foundation={LightFoundation}>
     <MemoryRouter>
