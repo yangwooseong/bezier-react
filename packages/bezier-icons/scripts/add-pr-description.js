@@ -8,7 +8,7 @@ const pullNumber = process.argv[3]
 
 const updateDescription = async (description) => {
   try {
-    const res = await fetch(`https://api.github.com/repos/channel-io/bezier-react/pulls/${pullNumber}`, {
+    const res = await fetch(`https://api.github.com/repos/yangwooseong/bezier-react/pulls/${pullNumber}`, {
       method: 'PATCH',
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',
