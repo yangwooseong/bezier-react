@@ -1,5 +1,19 @@
 # @channel.io/bezier-icons
 
+## 0.12.0
+
+### Minor Changes
+
+- Update icons ([#1640](https://github.com/channel-io/bezier-react/pull/1640)) by @kimminkyung94
+
+  **CHANGE**
+
+  - PageDownload
+  - PageZip
+  - Page
+
+- Add a job that adds description about icon change triggered by figma-plugin () by @yangwooseong
+
 ## 0.11.0
 
 ### Minor Changes
