@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const { generateIconFiles } = require('./generateIconFilesFromJson')
+const { generateIconFiles } = require('../generateIconFilesFromJson')
 
 jest.mock('fs', () => ({
   existsSync: () => false,
