@@ -23,7 +23,7 @@ const generateSVGFilesFromMap = (iconsJson, dir) => {
 }
 
 const generateIconFiles = (iconsJson, dir) => {
-  flushAndMakeIconsDirectory(dir)
+  flushAndMakeIconsDirectory(path.resolve(dir, 'icons'))
   generateSVGFilesFromMap(iconsJson, dir)
 }
 
