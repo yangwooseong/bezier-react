@@ -11,12 +11,7 @@ import classNames from 'classnames'
 import { createContext } from '~/src/utils/react'
 import { isNil } from '~/src/utils/type'
 
-import {
-  Button,
-  ButtonColorVariant,
-  ButtonSize,
-  ButtonStyleVariant,
-} from '~/src/components/Button'
+import { Button } from '~/src/components/Button'
 import {
   Icon,
   IconSize,
@@ -141,9 +136,9 @@ export const TabItems = forwardRef<HTMLDivElement, TabItemsProps>(function TabIt
 
 function getButtonSizeBy(size: TabSize) {
   return ({
-    [TabSize.L]: ButtonSize.L,
-    [TabSize.M]: ButtonSize.M,
-    [TabSize.S]: ButtonSize.S,
+    [TabSize.L]: 'l',
+    [TabSize.M]: 'm',
+    [TabSize.S]: 's',
   } as const)[size]
 }
 
@@ -177,8 +172,8 @@ export const TabItem = forwardRef<HTMLButtonElement, TabItemProps>(function TabI
         disabled={disabled}
         text={children}
         size={getButtonSizeBy(size)}
-        colorVariant={ButtonColorVariant.MonochromeLight}
-        styleVariant={ButtonStyleVariant.Tertiary}
+        colorVariant="monochrome-light"
+        styleVariant="tertiary"
         ref={forwardedRef}
         {...rest}
       />

@@ -13,12 +13,7 @@ import {
   isString,
 } from '~/src/utils/type'
 
-import {
-  Button,
-  ButtonColorVariant,
-  ButtonSize,
-  ButtonStyleVariant,
-} from '~/src/components/Button'
+import { Button } from '~/src/components/Button'
 import { Help } from '~/src/components/Help'
 import {
   Icon,
@@ -95,9 +90,9 @@ function RightContent({ children }: { children: SectionLabelRightContent }) {
         styles.RightItem,
         withAction && styles.clickable,
       )}
-      size={ButtonSize.XS}
-      styleVariant={ButtonStyleVariant.Tertiary}
-      colorVariant={ButtonColorVariant.MonochromeLight}
+      size="xs"
+      styleVariant="tertiary"
+      colorVariant="monochrome-light"
     />
   )
 }
