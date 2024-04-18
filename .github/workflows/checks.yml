@@ -3,6 +3,10 @@ on: [pull_request]
 jobs:
   checks:
     runs-on: ubuntu-latest
+    env:
+      TURBO_API: http://127.0.0.1:9080
+      TURBO_TOKEN: 54db2817-4e5b-4ad7-bc55-29ad818f363b
+      TURBO_TEAM: bezier-react
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,22 +26,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           server-token: 54db2817-4e5b-4ad7-bc55-29ad818f363b
 
-      - run: yarn build --api="http://127.0.0.1:9080" --token="54db2817-4e5b-4ad7-bc55-29ad818f363b" --team="bezier-react"
-
+      - run: yarn build
       - run: yarn lint
-        env:
-          TURBO_API: 'http://127.0.0.1:9080'
-          TURBO_TOKEN: 54db2817-4e5b-4ad7-bc55-29ad818f363b
-          TURBO_TEAM: 'bezier-react'
-
       - run: yarn typecheck
-        env:
-          TURBO_API: 'http://127.0.0.1:9080'
-          TURBO_TOKEN: 54db2817-4e5b-4ad7-bc55-29ad818f363b
-          TURBO_TEAM: 'bezier-react'
-
       - run: yarn test
-        env:
-          TURBO_API: 'http://127.0.0.1:9080'
-          TURBO_TOKEN: 54db2817-4e5b-4ad7-bc55-29ad818f363b
-          TURBO_TEAM: 'bezier-react'
