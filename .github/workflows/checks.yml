@@ -12,7 +12,9 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - run: nvm use
+      - name: Install Dependencies
+        run: yarn install
+
       - run: yarn build
       - run: yarn lint
       - run: yarn typecheck
