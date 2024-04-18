@@ -59,7 +59,7 @@ enum Option {
   V2RemoveAlphaFromAlphaComponents = 'v2-remove-alpha-from-alpha-components',
   V2TextComponentInterface = 'v2-text-component-interface',
   V2ImportFromBezierToStyledComponents = 'v2-import-from-bezier-to-styled-components',
-  Exit = 'Exit',
+  Exit = 'Exit_test',
 }
 
 type TransformName = Exclude<Option, Option.Exit>
