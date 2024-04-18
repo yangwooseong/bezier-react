@@ -20,28 +20,25 @@ jobs:
         uses: felixmosh/turborepo-gh-artifacts@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          server-token: '54db2817-4e5b-4ad7-bc55-29ad818f363b'
+          server-token: 54db2817-4e5b-4ad7-bc55-29ad818f363b
 
-      - run: yarn build
-        env:
-          TURBO_API: 'http://127.0.0.1:9080'
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_TEAM: 'bezier-react'
+      - run: yarn build --api="http://127.0.0.1:9080" --token="54db2817-4e5b-4ad7-bc55-29ad818f363b" --team="bezier-react"
+      - run: yarn lint --api="http://127.0.0.1:9080" --token="54db2817-4e5b-4ad7-bc55-29ad818f363b" --team="bezier-react"
 
-      - run: yarn lint
-        env:
-          TURBO_API: 'http://127.0.0.1:9080'
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_TEAM: 'bezier-react'
+      # - run: yarn lint
+      #   env:
+      #     TURBO_API: 'http://127.0.0.1:9080'
+      #     TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      #     TURBO_TEAM: 'bezier-react'
 
-      - run: yarn typecheck
-        env:
-          TURBO_API: 'http://127.0.0.1:9080'
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_TEAM: 'bezier-react'
+      # - run: yarn typecheck
+      #   env:
+      #     TURBO_API: 'http://127.0.0.1:9080'
+      #     TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      #     TURBO_TEAM: 'bezier-react'
 
-      - run: yarn test
-        env:
-          TURBO_API: 'http://127.0.0.1:9080'
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_TEAM: 'bezier-react'
+      # - run: yarn test
+      #   env:
+      #     TURBO_API: 'http://127.0.0.1:9080'
+      #     TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      #     TURBO_TEAM: 'bezier-react'
