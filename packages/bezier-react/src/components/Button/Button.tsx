@@ -17,7 +17,7 @@ import styles from './Button.module.scss'
 
 export const BUTTON_TEST_ID = 'bezier-button'
 
-function getTypography_test_1(size: ButtonSize) {
+function getTypography_test_2(size: ButtonSize) {
   return (
     {
       xs: '13',
@@ -147,7 +147,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           {text && (
             <Text
               className={styles.ButtonText}
-              typo={getTypography_test_1(size)}
+              typo={getTypography_test_2(size)}
               bold
             >
               {text}
