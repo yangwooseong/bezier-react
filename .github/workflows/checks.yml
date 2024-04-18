@@ -26,7 +26,14 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           server-token: 54db2817-4e5b-4ad7-bc55-29ad818f363b
 
-      - run: yarn build
-      - run: yarn lint
-      - run: yarn typecheck
+      - name: Build
+        run: yarn build
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Typecheck
+        run: yarn typecheck
+
+      - name: Test
       - run: yarn test
