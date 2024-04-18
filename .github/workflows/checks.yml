@@ -30,14 +30,14 @@ jobs:
           TURBO_TOKEN: 54db2817-4e5b-4ad7-bc55-29ad818f363b
           TURBO_TEAM: 'bezier-react'
 
-      # - run: yarn typecheck
-      #   env:
-      #     TURBO_API: 'http://127.0.0.1:9080'
-      #     TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      #     TURBO_TEAM: 'bezier-react'
+      - run: yarn typecheck
+        env:
+          TURBO_API: 'http://127.0.0.1:9080'
+          TURBO_TOKEN: 54db2817-4e5b-4ad7-bc55-29ad818f363b
+          TURBO_TEAM: 'bezier-react'
 
-      # - run: yarn test
-      #   env:
-      #     TURBO_API: 'http://127.0.0.1:9080'
-      #     TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      #     TURBO_TEAM: 'bezier-react'
+      - run: yarn test
+        env:
+          TURBO_API: 'http://127.0.0.1:9080'
+          TURBO_TOKEN: 54db2817-4e5b-4ad7-bc55-29ad818f363b
+          TURBO_TEAM: 'bezier-react'
