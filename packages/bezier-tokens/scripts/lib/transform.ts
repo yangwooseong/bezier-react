@@ -3,7 +3,7 @@ import type { Named, Transform } from 'style-dictionary'
 import { extractNumber, toCSSDimension } from './utils'
 
 type CustomTransform = Named<Transform<unknown>>
-type Transforms = Record<string, CustomTransform>
+type Transforms_test = Record<string, CustomTransform>
 
 export const CSSTransforms = {
   alphaNamespace: {
@@ -104,4 +104,4 @@ export const CSSTransforms = {
         .map(({ color, position }) => `${color} ${position}`)
         .join(', ')})`,
   },
-} satisfies Transforms
+} satisfies Transforms_test
