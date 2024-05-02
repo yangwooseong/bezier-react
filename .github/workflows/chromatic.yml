@@ -7,7 +7,7 @@ on:
       - alpha
   pull_request:
     branches-ignore:
-      - 'changeset-release/**'
+      - 'changeset-release**'
     paths:
       - packages/bezier-react/**
 
