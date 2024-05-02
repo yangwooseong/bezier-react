@@ -8,8 +8,8 @@ on:
   pull_request:
     paths:
       - packages/bezier-react/**
-    branches:
-      - '!changeset-release/**'
+    # branches:
+    #   - '!changeset-release/**'
 
 jobs:
   chromatic-deployment:
