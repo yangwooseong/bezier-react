@@ -9,7 +9,7 @@ on:
     paths:
       - packages/bezier-react/**
     branches:
-      - '!changeset-release/*'
+      - '!changeset-release/'
 
 jobs:
   chromatic-deployment:
