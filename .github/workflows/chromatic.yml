@@ -1,18 +1,16 @@
 name: Chromatic
 
 on:
-  push:
-    # branches:
-    #   - main
-    #   - alpha
-    paths:
-      - packages/bezier-react/**
-  pull_request:
-    # branches:
-    #   - main
-    #   - alpha
-    paths:
-      - packages/bezier-react/**
+  [push, pull_request]
+  # push:
+  #   # paths:
+  #   #   - packages/bezier-react/**
+  # pull_request:
+  #   # branches:
+  #   #   - main
+  #   #   - alpha
+  #   # paths:
+  #   #   - packages/bezier-react/**
 
 jobs:
   chromatic-common:
