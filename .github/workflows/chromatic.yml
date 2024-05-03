@@ -2,15 +2,15 @@ name: Chromatic
 
 on:
   push:
+    branches:
+      - main
+      - alpha
     paths:
       - packages/bezier-react/**
-  # pull_request:
-  #   types: [opened, reopened]
-  #   paths:
-  #     - packages/bezier-react/**
 
 jobs:
-  chromatic-common:
+  chromatic-deployment:
+    name: Chromatic
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
