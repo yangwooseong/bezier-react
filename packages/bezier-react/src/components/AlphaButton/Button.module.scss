@@ -100,6 +100,8 @@ $chromatic-colors: 'blue', 'red', 'green', 'cobalt', 'orange', 'pink', 'purple';
     background-color: initial;
   }
 
+  background-color: red;
+
   /* color */
   /* stylelint-disable-next-line no-duplicate-selectors */
   &:where(.variant-primary) {
