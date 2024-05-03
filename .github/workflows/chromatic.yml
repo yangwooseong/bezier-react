@@ -64,15 +64,3 @@ jobs:
         with:
           name: pr
           path: pr/
-
-  chromatic-push:
-    # if: github.event_name == 'push' && github.actor != 'dependabot[bot]' && github.actor != 'renovate[bot]'
-    needs: chromatic-common
-    name: Chromatic Push
-    runs-on: ubuntu-latest
-
-  chromatic-pull-request:
-    # if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' && github.actor != 'renovate[bot]'
-    needs: chromatic-common
-    name: Chromatic Pull Request
-    runs-on: ubuntu-latest
