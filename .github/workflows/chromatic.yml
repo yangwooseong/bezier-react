@@ -5,14 +5,17 @@ on:
     branches:
       - main
       - alpha
+    paths:
+      - packages/bezier-react/**
   pull_request:
+    branches:
+      - main
+      - alpha
     paths:
       - packages/bezier-react/**
 
 jobs:
-  chromatic-deployment:
-    if: github.actor != 'dependabot[bot]' && github.actor != 'renovate[bot]'
-    name: Chromatic
+  chromatic-common:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,10 +47,10 @@ jobs:
 
       - name: Publish to Chromatic
         uses: chromaui/action@v11
-        id: chromatic
         with:
           workingDir: packages/bezier-react
           exitZeroOnChanges: true
+          onlyChanged: ${{ github.event_name == 'push' }}
           skip: dependabot/**
           projectToken: 06157a6fbe6f
 
@@ -63,3 +66,16 @@ jobs:
         with:
           name: pr
           path: pr/
+
+jobs:
+  chromatic-push:
+    if: github.event_name == 'push' && github.actor != 'dependabot[bot]' && github.actor != 'renovate[bot]'
+    needs: chromatic-common
+    name: Chromatic Push
+    runs-on: ubuntu-latest
+
+  chromatic-pull-request:
+    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' && github.actor != 'renovate[bot]'
+    needs: chromatic-common
+    name: Chromatic Pull Request
+    runs-on: ubuntu-latest
