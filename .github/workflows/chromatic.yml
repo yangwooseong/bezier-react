@@ -15,6 +15,8 @@ jobs:
     name: Chromatic
     runs-on: ubuntu-latest
     steps:
+      - name: Log
+        run: echo "$GITHUB_ACTOR"
       - name: Checkout
         uses: actions/checkout@v4
         with:
