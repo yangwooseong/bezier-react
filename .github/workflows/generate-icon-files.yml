@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -38,10 +38,6 @@ jobs:
         id: pr
         if: ${{ steps.generate-svg-files.outputs.icon_not_changed == 0}}
         run: echo "pull_request_number=$(gh pr view --json number -q .number || echo "")" >> $GITHUB_OUTPUT
-        env:
-          # use PAT for CI trigger
-          # https://github.com/orgs/community/discussions/25702
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Add pr description
         if: ${{ steps.generate-svg-files.outputs.icon_not_changed == 0}}
@@ -56,8 +52,6 @@ jobs:
           git commit -m "chore(bezier-icons): add changeset"
 
       - name: Delete icons.json files
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           git rm packages/bezier-icons/icons.json
           git commit -m "feat(bezier-icons): remove icons.json"
