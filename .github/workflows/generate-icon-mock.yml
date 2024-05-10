@@ -32,7 +32,7 @@ jobs:
           git config --global user.name "ch-builder"
 
       - name: Generate svg files from icons.json
-      - run: |
+        run: |
           date > generated.txt
           git add .
           git commit -m "generated"
