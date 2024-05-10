@@ -1,0 +1,39 @@
+name: Generate icon files from icons.json file
+
+on:
+  push:
+    branches:
+      - icon-update-*
+    paths:
+      - packages/bezier-icons/icons.json
+
+permissions:
+  contents: write
+
+jobs:
+  generate-svg:
+    name: Generate icon files mock
+    runs-on: ubuntu-latest
+    steps:
+      - name: mock
+        run: echo "this is mock for icon generate"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Git Config
+        run: |
+          git config --global user.email "eng@channel.io"
+          git config --global user.name "ch-builder"
+
+      - name: Generate svg files from icons.json
+      - run: |
+          date > generated.txt
+          git add .
+          git commit -m "generated"
+          git push
