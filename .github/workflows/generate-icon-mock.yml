@@ -23,6 +23,7 @@ jobs:
         with:
           persist-credentials: false
           token: ${{ secrets.PAT }}
+        secrets: inherit
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
