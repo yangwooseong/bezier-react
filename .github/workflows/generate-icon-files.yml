@@ -10,15 +10,15 @@ on:
 jobs:
   generate-svg:
     name: Generate icon files from icons.json file
-    if: ${{ hashFiles('packages/bezier-icons/icons.json') != '' }}
+    if: ${{ hashFiles('**/packages/bezier-icons/icons.json') != '' }}
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.PAT }}
+      GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -45,7 +45,7 @@ jobs:
       - name: Add pr description
         if: ${{ steps.generate-svg-files.outputs.icon_not_changed == 0}}
         run: |
-          node packages/bezier-icons/scripts/add-pr-description.js ${{ secrets.PAT }} ${{ steps.pr.outputs.pull_request_number }}
+          node packages/bezier-icons/scripts/add-pr-description.js ${{ secrets.PERSONAL_ACCESS_TOKEN }} ${{ steps.pr.outputs.pull_request_number }}
 
       - name: Add changeset
         if: ${{ steps.generate-svg-files.outputs.icon_not_changed == 0}}
