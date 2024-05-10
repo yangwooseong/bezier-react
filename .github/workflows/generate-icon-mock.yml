@@ -21,9 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
           token: ${{ secrets.PAT }}
-        secrets: inherit
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -41,3 +39,5 @@ jobs:
           git add .
           git commit -m "generated"
           git push
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
