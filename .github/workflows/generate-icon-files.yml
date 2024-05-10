@@ -10,6 +10,7 @@ on:
 jobs:
   generate-svg:
     name: Generate icon files from icons.json file
+    if: ${{ hashFiles('packages/bezier-icons/icons.json') != '' }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.PAT }}
