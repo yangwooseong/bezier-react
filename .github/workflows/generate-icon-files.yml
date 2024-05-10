@@ -10,11 +10,13 @@ on:
 jobs:
   generate-svg:
     name: Generate icon files from icons.json file
-    if: ${{ hashFiles('**/packages/bezier-icons/icons.json') != '' }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     steps:
+      - name: 'test'
+        run: echo "${{ hashFiles('packages/bezier-icons/icons.json') }}"
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
