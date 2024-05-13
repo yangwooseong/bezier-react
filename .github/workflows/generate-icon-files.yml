@@ -1,7 +1,8 @@
 name: Generate icon files from icons.json file
 
 on:
-  push:
+  pull_request:
+    types: [opened]
     branches:
       - icon-update-*
     paths:
