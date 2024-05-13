@@ -3,8 +3,6 @@ name: Generate icon files from icons.json file
 on:
   pull_request:
     types: [opened]
-    branches:
-      - icon-update-*
     paths:
       - packages/bezier-icons/icons.json
 
@@ -19,6 +17,7 @@ jobs:
         run: |
           echo "${{ hashFiles('**/icons.json') }}"
           echo "${{ hashFiles('yarn.lock') }}"
+          echo "${{ hashFiles('**/yarn.lock') }}"
           echo "${{ hashFiles('packages/bezier-icons/LICENSE') }}"
 
       - name: Checkout
