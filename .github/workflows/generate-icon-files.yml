@@ -15,7 +15,10 @@ jobs:
       GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     steps:
       - name: 'test'
-        run: echo "${{ hashFiles('**/packages/bezier-icons/icons.json') }}"
+        run: |
+          echo "${{ hashFiles('**/icons.json') }}"
+          echo "${{ hashFiles('yarn.lock') }}"
+          echo "${{ hashFiles('packages/bezier-icons/LICENSE') }}"
 
       - name: Checkout
         uses: actions/checkout@v4
