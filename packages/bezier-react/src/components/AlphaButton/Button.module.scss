@@ -4,6 +4,7 @@ $chromatic-colors: 'blue', 'red', 'green', 'cobalt', 'orange', 'pink', 'purple';
   position: relative;
   box-sizing: border-box;
   transition: background-color var(--transition-s);
+  background-color: red;
 
   /* dimension */
   &:where(.size-xs) {
