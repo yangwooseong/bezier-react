@@ -1,6 +1,6 @@
 .Help {
   line-height: 0;
-  background-color: red;
+  background-color: green;
 
   &:where(:not([data-state='closed'])) {
     > .Icon {
