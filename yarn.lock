@@ -8782,7 +8782,6 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-router-dom: "npm:^6.22.1"
     style-loader: "npm:^3.3.4"
-    svgo: "npm:^3.3.2"
     ts-loader: "npm:^9.5.1"
     tsconfig: "workspace:*"
     url-loader: "npm:^4.1.1"
