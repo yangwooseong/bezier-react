@@ -13,6 +13,8 @@ import '@channel.io/bezier-react/styles.css'
 const container = document.getElementById('root') as HTMLElement
 const root = createRoot(container)
 
+console.log('LOG')
+
 root.render(
   <AppProvider>
     <MemoryRouter>
