@@ -2,7 +2,9 @@
 const fs = require('fs')
 const path = require('path')
 
-const { generateIconFiles } = require('./generateIconFilesFromJson')
+const { optimize } = require('svgo')
+
+const { generateIconFiles, svgoConfig } = require('./generateIconFilesFromJson')
 
 jest.mock('fs', () => ({
   existsSync: () => false,
@@ -24,7 +26,7 @@ describe('generate-icon-files script', () => {
 
     expect(fs.writeFileSync).toHaveBeenCalledWith(
       path.resolve(`${bezierIconsDirectory}/send.svg`),
-      iconSvg,
+      optimize(iconSvg, svgoConfig).data,
       'utf-8'
     )
   })
