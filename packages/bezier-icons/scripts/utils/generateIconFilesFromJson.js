@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 
+const { optimize } = require('svgo')
+
 const flushAndMakeIconsDirectory = (dir) => {
   if (fs.existsSync(dir)) {
     fs.rmSync(dir, { recursive: true, force: true })
@@ -14,7 +16,7 @@ const makeSvgFiles =
     const svgPath = path.resolve(dir, `${iconName}.svg`)
     const { svg } = svgObject
 
-    fs.writeFileSync(svgPath, svg, 'utf-8')
+    fs.writeFileSync(svgPath, optimize(svg), 'utf-8')
   }
 
 const generateSVGFilesFromMap = (iconsJson, dir) => {
