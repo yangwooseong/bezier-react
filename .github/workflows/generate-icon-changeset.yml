@@ -22,8 +22,7 @@ jobs:
 
       - name: Log
         run: |
-          git log --oneline
-          git status
+          git log -1 --name-status --pretty="format:"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,11 +34,19 @@ jobs:
           git config --global user.email "eng@channel.io"
           git config --global user.name "ch-builder"
 
+      - name: Log
+        run: |
+          git log -1 --name-status --pretty="format:"
+
       - name: Get PR number
         id: pr
         run: |
           echo "pull_request_number=$(gh pr view --json number -q .number || echo "")" >> $GITHUB_OUTPUT
           echo $GITHUB_OUTPUT
+
+      - name: Log
+        run: |
+          git log -1 --name-status --pretty="format:"
 
       - name: Add pr description
         run: |
