@@ -22,6 +22,9 @@ const getHoveredColor = (value: string, theme: 'dark' | 'light') => {
   let lightness = l
   let saturation = s
 
+  // console.log('LOG: ', value, color.toHsl())
+  const isAchromatic = s <= 0.1
+
   if (a === 0) {
     alpha = 0.1
   } else if (a <= 0.2) {
@@ -31,15 +34,28 @@ const getHoveredColor = (value: string, theme: 'dark' | 'light') => {
   if (a !== 0) {
     if (theme === 'light') {
       if (l <= 0.17) {
-        lightness = (l + 0.07) * 1.1
+        if (isAchromatic) {
+          lightness = (l + 0.1) * 1.1
+        } else {
+          lightness = (l + 0.07) * 1.1
+        }
         saturation += 0.05
       } else {
-        lightness *= 0.93
+        if (isAchromatic) {
+          lightness *= 0.97
+        } else {
+          lightness *= 0.93
+        }
+
         saturation -= 0.03
       }
     } else {
       if (l >= 0.83) {
-        lightness = (lightness - 0.2) * 0.98
+        if (isAchromatic) {
+          lightness = lightness * 0.97
+        } else {
+          lightness = (lightness - 0.2) * 0.98
+        }
         saturation -= 0.03
       } else {
         lightness = (lightness + 0.04) * 1.005
@@ -70,6 +86,7 @@ export const getHoveredColorToken = (
   token: TransformedToken
 ): TransformedToken => {
   const theme = token.filePath.includes('dark') ? 'dark' : 'light'
+
   return {
     ...token,
     original: {
