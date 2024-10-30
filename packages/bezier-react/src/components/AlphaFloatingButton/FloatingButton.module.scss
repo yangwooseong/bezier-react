@@ -27,6 +27,17 @@ $chromatic-colors: 'blue', 'red', 'green', 'cobalt', 'orange', 'pink', 'purple';
     dark-grey: --alpha-color-fg-black-darkest,
     light-grey: --alpha-color-fg-black-darker,
   );
+  $hovered-color-map: (
+    blue: --alpha-color-primary-fg-dark,
+    cobalt: --alpha-color-accent-fg-dark,
+    red: --alpha-color-critical-fg-dark,
+    orange: --alpha-color-warning-fg-dark,
+    green: --alpha-color-success-fg-dark,
+    pink: --alpha-color-fg-pink-dark,
+    purple: --alpha-color-fg-purple-dark,
+    dark-grey: --alpha-color-fg-black-darkest,
+    light-grey: --alpha-color-fg-black-darkest,
+  );
   $icon-color-map: (
     light-grey: --alpha-color-fg-black-dark,
     dark-grey: --alpha-color-fg-black-darker,
@@ -141,12 +152,12 @@ $chromatic-colors: 'blue', 'red', 'green', 'cobalt', 'orange', 'pink', 'purple';
       }
     }
 
-    @each $color, $background-color in $color-map {
+    @each $color, $hovered-color in $hovered-color-map {
       &:where(.variant-secondary.color-#{'' + $color}) {
-        color: var(#{$background-color}-hovered);
+        color: var(#{$hovered-color});
 
         & :is(.ButtonIcon) {
-          color: var(#{$background-color}-hovered);
+          color: var(#{$color});
         }
       }
     }
